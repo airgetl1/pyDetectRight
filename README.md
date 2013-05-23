@@ -6,10 +6,13 @@ This wrapper is based on Py4J to communicate with Java library officially provid
 For native Java API, please visit http://detectright.com/
 
 
-Dependencies
+Install
 -------------
 
-`py4j`: http://py4j.sourceforge.net/
+Dependency:  `py4j`  --  http://py4j.sourceforge.net/
+
+Download `pyDetectRight` from https://github.com/caesar0301/pyDetectRight and 
+run `python setup.py install`
 
 
 How to use
