@@ -6,7 +6,7 @@ from py4j.protocol import Py4JJavaError
 
 ## Modify to load detectright database
 ######################################
-db = "/Users/chenxm/Jamin/workspace/eclipse/uadecoder/db/detectright.data"
+db = "/media/tera/workspace/eclipse/uadetector/db/detectright.data"
 ######################################
 
 
