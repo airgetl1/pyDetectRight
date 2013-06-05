@@ -14,6 +14,8 @@ class DetectRight(object):
 
 	def __init__(self, dbstring):
 		self.db = dbstring
+		if not os.path.exists(self.db):
+			raise IOError, "Invalid detectright database: %s" % self.db
 		self.pthread = None		
 
 	def start_server(self):
@@ -33,8 +35,8 @@ class DetectRight(object):
 		classpath += (".:" + java_bin + ':')
 		for lib_jar in glob.glob(os.path.join(java_lib, '*.jar')):
 			classpath = ''.join([os.path.join(java_lib, lib_jar), ':', classpath])
-		# JAVAHOME
-		javahome = os.environ.get("JAVAHOME")
+		# JAVA_HOME
+		javahome = os.environ.get("JAVA_HOME")
 		# compile java module
 		compile_cmd = os.path.join(javahome, 'bin/javac') if javahome else 'javac'
 		compile_cmd = ' '.join([compile_cmd, '-d', java_bin, '-cp', classpath, os.path.join(java_src, 'omnilab/bd/chenxm/DetectRightEntry.java')])
