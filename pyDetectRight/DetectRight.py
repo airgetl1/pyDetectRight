@@ -4,7 +4,6 @@ import os
 import subprocess
 import glob
 import time
-import sys
 import traceback
 from py4j.java_gateway import JavaGateway
 from py4j.java_collections import MapConverter, ListConverter
@@ -16,7 +15,7 @@ class DetectRight(object):
 		self.db = dbstring
 		if not os.path.exists(self.db):
 			raise IOError, "Invalid detectright database: %s" % self.db
-		self.pthread = None		
+		self.pid = None		
 
 	def start_server(self):
 		# prepare variables about java module of pyDetectRight
@@ -44,7 +43,8 @@ class DetectRight(object):
 		# run gateway server
 		run_cmd = os.path.join(javahome, 'bin/java') if javahome else 'java'
 		run_cmd = ' '.join([run_cmd, '-cp', classpath, 'omnilab.bd.chenxm.DetectRightEntry'])
-		self.pthread = subprocess.Popen(run_cmd, shell = True)
+		pr = subprocess.Popen(run_cmd, shell = True, preexec_fn=os.setsid)
+		self.pid = pr.pid
 		time.sleep(5)	# wait for starting gateway server
 		try:
 			self.gateway = JavaGateway()
@@ -56,8 +56,10 @@ class DetectRight(object):
 
 
 	def stop_server(self):
+		import signal
 		print("Stopping server...")
-		if self.pthread: self.pthread.terminate()
+		# Send the signal to all the process groups
+		if self.pid: os.killpg(self.pid, signal.SIGTERM)
 
 
 	def getAllDevices(self, ids = None):
