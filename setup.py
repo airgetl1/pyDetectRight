@@ -6,13 +6,15 @@ from pyDetectRight import __version__
 setup(
     name = "pyDetectRight",
     version = __version__,
-    url = '',
-    author = 'caesar0301',
+    url = 'https://github.com/caesar0301/pyDetectRight',
+    author = 'Jamin Chen',
     author_email = 'chenxm35@gmail.com',
     description = 'A Python wrapper for DetectRight Java API.',
     long_description='''A Python wrapper for DetectRight Java API. This wrapper is based on Py4J to communicate with Java library officially provided. For native Java API, please visit http://detectright.com/''',
     license = "LICENSE",
-    packages = ['pyDetectRight', 'java'],
+    packages = ['pyDetectRight'],
+    package_dir = {'pyDetectRight': 'pyDetectRight'},
+    package_data = {'pyDetectRight': ['java/lib/*.jar', 'java/src/omnilab/bd/chenxm/*.java']},
     classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -22,7 +24,6 @@ setup(
             'Programming Language :: Python',
             'Programming Language :: Python :: 2.6',
             'Programming Language :: Python :: 2.7',
-            'Programming Language :: Python :: 3.2',
             'Topic :: Software Development :: Libraries :: Python Modules',
    ],
 )
