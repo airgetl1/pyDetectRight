@@ -12,7 +12,7 @@ setup(
     description = 'A Python wrapper for DetectRight Java API.',
     long_description='''A Python wrapper for DetectRight Java API. This wrapper is based on Py4J to communicate with Java library officially provided. For native Java API, please visit http://detectright.com/''',
     license = "LICENSE",
-    packages = ['pyDetectRight'],
+    packages = ['pyDetectRight', 'java'],
     classifiers = [
         'Development Status :: 4 - Beta',
         'Environment :: Console',

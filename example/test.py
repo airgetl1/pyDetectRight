@@ -10,13 +10,14 @@ db = "/Users/chenxm/Jamin/workspace/eclipse/uadecoder/db/detectright.data"
 ######################################
 
 
-handler = DetectRight(db)
-devmap = handler.getProfileFromUA("Android 4.1")
+dr = DetectRight(db)
+dr.start_server()
+devmap = dr.getProfileFromUA("Android 4.1")
 print devmap
 
 
 uaprofile = "http://nds1.nds.nokia.com/uaprof/N6303iclassicr100.xml"
-print handler.getProfileFromUAProfile(uaprofile)
+print dr.getProfileFromUAProfile(uaprofile)
 
 
 # detectright.jar in the library folder is under evalution.
@@ -25,3 +26,6 @@ print handler.getProfileFromUAProfile(uaprofile)
 # 	handler.getAllDevices()
 # except Py4JJavaError as e:
 # 	print e
+
+
+dr.stop_server()
