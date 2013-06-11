@@ -58,4 +58,4 @@ The `detectright.jar` file published along with this library is an evalution ver
 out of function when you use it. If you have the complete version, you can replace it under "java/lib" 
 folder in your project.
 
-Happy coding ;)
+Enjoy ;)
